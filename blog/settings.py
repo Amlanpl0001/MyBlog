@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'post',
+    'marketing',
 ]
 
 MIDDLEWARE = [
@@ -105,22 +107,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_in_env')
-# ]
-# VENV_PATH = os.path.dirname(BASE_DIR)
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
-# MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'blog/static/')
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC')
 STATIC_URL = '/static/'
-
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'blog/static/')
+# ]
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC')
+# STATIC_URL = '/static/'
+#
+#
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
