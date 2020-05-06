@@ -29,17 +29,20 @@ INSTALLED_APPS = [
     #'tinymce',
     'ckeditor',
     'ckeditor_uploader',
+    'crispy_forms',
 
     'post',
     'marketing',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
-        'height': 500,
-        'width' : 900,
+        'height': 300,
+        'width' : '100%',
         'toolbar_Custom':[
                 ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
                 ['Link', 'Unlink', 'Anchor'],
@@ -50,13 +53,6 @@ CKEDITOR_CONFIGS = {
             ],
             'extraPlugins': 'codesnippet',
         },
-        # 'special': {
-        #     'toolbar': 'Special',
-        #     'toolbar_Special': [
-        #         ['Bold'], ['CodeSnippet'],
-        #         ],
-        #     'extraPlugins': 'codesnippet',
-        #     },
 }
 
 MIDDLEWARE = [

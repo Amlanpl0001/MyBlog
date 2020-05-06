@@ -3,7 +3,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from post import views
-from post.views import index, blog, post, search
+from post.views import (
+    index,
+    blog,
+    post,
+    search,
+    post_create,
+    post_update,
+    post_delete
+    )
 
 
 
@@ -12,6 +20,9 @@ urlpatterns = [
     path('', index),
     path('blog/', blog, name= 'post-list'),
     path('post/<id>', post, name= 'post-detail'),
+    path('create/', post_create, name= 'post-create'),
+    path('post/<id>/update/', post_update, name= 'post-update'),
+    path('post/<id>/delete/', post_delete, name= 'post-delete'),
     path('search/', search, name='search'),
     #path('tinymce/', include('tinymce.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
