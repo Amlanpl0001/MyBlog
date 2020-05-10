@@ -16,6 +16,10 @@
         </div>
       </div>
     </div>
+
+
+
+
     <div class="container">
       <!-- Navbar Brand -->
       <div class="navbar-header d-flex align-items-center justify-content-between">
@@ -39,6 +43,18 @@
           {% endif %}
         </ul>
         <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+        <ul class="navbar-nav ml-auto">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item nav-link">Welcome <kbd style="background-color: lightblue;color: #444;text-transform: capitalize;font-size:1rem;"> {{ user.username }} </kbd>
+          <!-- <li class="nav-item nav-link"><kbd style="background-color: lightblue;color: #444;text-transform: capitalize;font-size:1rem;"> {{ user.username }} </kbd> -->
+          </li>
+          <li class="nav-item"><a href="/accounts/logout/" class="nav-link active"> Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item"><a href="/accounts/login" class="nav-link">Login</a>
+          </li>
+          {% endif %}
+        </ul>
         <!-- <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul> -->
       </div>
     </div>

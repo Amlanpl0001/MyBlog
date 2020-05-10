@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'mainbase.html' %}
 {% load static %}
 
 {% block content %}
@@ -36,6 +36,8 @@
         <div class="text-inner d-flex align-items-center">
           <div class="content">
             <header class="post-header">
+              <a href="{{ obj.get_absolute_url }}">
+                <h3 class="h4">{{ obj.title }}</h3></a>
               <div class="category">
                 {% for cat in obj.categories.all %}
                 <a href="#">{{ cat }}</a>
@@ -79,7 +81,7 @@
     <div class="row">
       {% for obj in latest  %}
       <div class="post col-md-4">
-        <div class="post-thumbnail"><a href="#"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+        <div class="post-thumbnail"><a href="{{ obj.get_absolute_url }}"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid" style="width:  450px;height: 250px;"></a></div>
         <div class="post-details">
           <div class="post-meta d-flex justify-content-between">
             <div class="date">{{ obj.timestamp }}</div>

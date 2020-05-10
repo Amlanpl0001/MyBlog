@@ -14,18 +14,7 @@ def get_author(user):
 
 
 
-def search(request):
-    queryset = Post.objects.all()
-    query = request.GET.get('q')
-    if query:
-        queryset = queryset.filter(
-            Q(title__icontains=query) |
-            Q(overview__icontains=query)
-        ).distinct()
-    context = {
-        'queryset': queryset
-    }
-    return render(request, 'search_results.html', context)
+
 
 def get_category_count():
     queryset = Post \
@@ -34,9 +23,34 @@ def get_category_count():
         .annotate(Count('categories__title'))
     return queryset
 
+
+def search(request):
+    # cat= category_count.categories__title
+    category_count = get_category_count().all()
+    queryset = Post.objects.all()
+    print("HI")
+    print(queryset)
+    print(category_count)
+    for cat in category_count:
+        for catt in cat:
+            print(cat[catt])
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(title__icontains=query) |
+            Q(overview__icontains=query)
+            # Q(cat__icontains=query)
+        ).distinct()
+    context = {
+        'queryset': queryset
+    }
+    return render(request, 'search_results.html', context)
+
+
 def index(request):
     featured = Post.objects.filter(featured = True).order_by('-timestamp')[0:3]
     latest = Post.objects.order_by('-timestamp')[0:3]
+    post_list = Post.objects.all()
 
     if request.method == "POST":
         email = request.POST["email"]
